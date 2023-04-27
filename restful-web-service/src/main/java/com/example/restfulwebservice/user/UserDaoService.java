@@ -2,10 +2,7 @@ package com.example.restfulwebservice.user;
 
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class UserDaoService {
@@ -57,6 +54,20 @@ public class UserDaoService {
 
             if (user.getId() == id) {
                 iterator.remove();
+                return user;
+            }
+        }
+
+        return null;
+    }
+
+    public User update(User user) {
+        ListIterator iterator = users.listIterator();
+
+        while (iterator.hasNext()) {
+            User target = (User) iterator.next();
+            if (target.getId() == user.getId()) {
+                iterator.set(user);
                 return user;
             }
         }

@@ -52,4 +52,13 @@ public class UserController {
             throw new UserNotFoundException(String.format("ID[%s] not found", id));
         }
     }
+
+    @PutMapping("/users")
+    public void updateUser(@RequestBody User user) {
+        User updatedUser = service.update(user);
+
+        if (updatedUser == null) {
+            throw new UserNotFoundException(String.format("ID[%s] not found", user.getId()));
+        }
+    }
 }
