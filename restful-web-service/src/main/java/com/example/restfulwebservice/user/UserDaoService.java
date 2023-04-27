@@ -25,14 +25,6 @@ public class UserDaoService {
         return this.users;
     }
 
-    public User save(User user) {
-        if (user.getId() == null) {
-            user.setId(++usersCount);
-        }
-
-        users.add(user);
-        return user;
-    }
 
     public User findOne(int id) {
         for (User user : users) {
@@ -42,5 +34,17 @@ public class UserDaoService {
         }
 
         return null;
+    }
+    public User save(User user) {
+        if (user.getId() == null) {
+            user.setId(++usersCount);
+        }
+
+        if (user.getJoinDate() == null) {
+            user.setJoinDate(new Date());
+        }
+
+        users.add(user);
+        return user;
     }
 }
