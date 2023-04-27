@@ -1,10 +1,7 @@
 package com.example.restfulwebservice.controller;
 
 import com.example.restfulwebservice.dto.HelloWorldBean;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HelloWorldController {
@@ -24,4 +21,7 @@ public class HelloWorldController {
     public HelloWorldBean helloWorldBean() {
         return new HelloWorldBean("Hello World");
     }
+
+    @GetMapping(path = "/hello-world-bean/path-variable/{name}")
+    public HelloWorldBean helloWorldBeanName(@PathVariable(value = "name") String name) { return new HelloWorldBean(String.format("Hello World, %s", name));}
 }
