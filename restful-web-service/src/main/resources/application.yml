@@ -2,14 +2,18 @@ server:
   port: 8088
 
 
-logging:
-  level:
-    org.springframework: DEBUG
+#logging:
+#  level:
+#    org.springframework: DEBUG
 
 
 spring:
   messages:
     basename: messages
+#  security:
+#    user:
+#      name: username
+#      password: passw0rd
 
 
 management:
@@ -17,3 +21,5 @@ management:
     web:
       exposure:
         include: "*"
+
+
